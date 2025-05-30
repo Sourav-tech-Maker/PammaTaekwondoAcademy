@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Student Dashboard | Pamma Taekwondo Academy</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="assets/logo.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <a href="../../../index.html" class="back-to-home"
+        style="position:fixed;top:18px;left:18px;z-index:100;font-weight:bold;text-decoration:none;color:#007bff;">← Home</a>
+    <button id="mode-toggle" aria-label="Toggle dark/light mode">🌙</button>
+    <div class="container forms-container">
+        <!-- Login Form -->
+        <div id="login-container">
+            <a href="index.html">
+                <img src="./assets/student.png" alt="Academy Logo" class="logo">
+            </a>
+            <h1>Student Dashboard</h1>
+            <form id="login-form" autocomplete="off">
+                <input type="text" id="userid" placeholder="User ID" required>
+                <input type="password" id="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+            </form>
+            <button id="show-signup-btn" class="secondary-btn">Sign Up</button>
+        </div>
+        <!-- Sign Up Form (hidden by default) -->
+        <div id="signup-container" style="display:none;">
+            <a href="index.html">
+                <img src="./assets/student.png" alt="Academy Logo" class="logo">
+            </a>
+            <h1>Create Account</h1>
+            <form id="signup-form" autocomplete="off">
+                <input type="text" id="signup-username" placeholder="Full Name" required>
+                <input type="email" id="signup-email" placeholder="Email" required>
+                <input type="text" id="signup-userid" placeholder="User ID" required>
+                <input type="password" id="signup-password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+            <button id="show-login-btn" class="secondary-btn">Back to Login</button>
+        </div>
+    </div>
+    <div class="container dashboard" id="dashboard-container" style="display:none;">
+        <a href="../../../index.html" class="back-to-home"
+            style="position:absolute;top:18px;left:18px;z-index:100;font-weight:bold;text-decoration:none;color:#007bff;">← Home</a>
+        <a href="index.html">
+            <img src="./assets/student.png" alt="Academy Logo" class="logo">
+        </a>
+        <h1>Welcome, <span id="student-name">Student</span>!</h1>
+        <div class="card">
+            <h2>Belt Progress</h2>
+            <div id="belt-progress"></div>
+            <div class="belt-progress">
+                <div class="belt belt-white"></div>
+                <div class="belt belt-yellow"></div>
+                <div class="belt belt-green"></div>
+                <div class="belt belt-blue"></div>
+                <div class="belt belt-red"></div>
+                <div class="belt belt-black"></div>
+            </div>
+        </div>
+        <div class="card">
+            <h2>Training History</h2>
+            <ul id="training-history">
+                <li>Session 1: Basics - Completed</li>
+                <li>Session 2: Kicks - Completed</li>
+                <li>Session 3: Sparring - Upcoming</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h2>Tomorrow's Goals</h2>
+            <ul id="tomorrow-goals-list"></ul>
+        </div>
+
+        <div class="card">
+            <h2>Goals</h2>
+            <ul id="goals-list">
+                <li>Master Green Belt Techniques</li>
+                <li>Attend 10 Sessions This Month</li>
+            </ul>
+        </div>
+        <button id="logout-btn">Logout</button>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            animation: {
+              fadeInUp: 'fadeInUp 1s cubic-bezier(.23,1.02,.32,1) both',
+              gradientBG: 'gradientBG 12s ease-in-out infinite alternate',
+              pulse: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              float: 'float 3s ease-in-out infinite'
+            },
+            keyframes: {
+              fadeInUp: {
+                '0%': { opacity: '0', transform: 'translateY(40px)' },
+                '100%': { opacity: '1', transform: 'translateY(0)' }
+              },
+              gradientBG: {
+                '0%': { backgroundPosition: '0% 50%' },
+                '100%': { backgroundPosition: '100% 50%' }
+              },
+              pulse: {
+                '0%, 100%': { opacity: 1 },
+                '50%': { opacity: 0.5 }
+              },
+              float: {
+                '0%, 100%': { transform: 'translateY(0)' },
+                '50%': { transform: 'translateY(-12px)' }
+              }
+            }
+          }
+        }
+      }
+    </script>
+</head>
+<body class="transition-colors duration-500 bg-white dark:bg-gray-900 relative overflow-x-hidden">
+    <!-- Back to Home Button -->
+    <a href="../index.html" class="fixed top-6 left-6 z-50 rounded-full bg-gray-800 text-white px-4 py-2 shadow-lg hover:bg-gray-700 transition-colors duration-300 flex items-center gap-2">
+        <span aria-hidden="true">←</span> Back to Home
+    </a>
+    <!-- Animated Gradient Background -->
+    <div class="fixed inset-0 -z-10 animate-gradientBG bg-[linear-gradient(270deg,#ff80b5,#9089fc,#1e3c72,#2c5364,#ff80b5)] bg-[length:200%_200%] blur-2xl opacity-60"></div>
+    <button id="toggle-dark" class="fixed top-6 right-6 z-50 rounded-full bg-indigo-500 text-white px-4 py-2 shadow-lg hover:bg-indigo-600 transition-colors duration-300">
+        🌙 Dark Mode
+    </button>
+    <div class="relative isolate px-6 py-24 sm:py-32 lg:px-8 transition-colors duration-500 bg-white/80 dark:bg-gray-900/80 rounded-3xl shadow-xl max-w-6xl mx-auto mt-10">
+      <div class="mx-auto max-w-4xl text-center">
+        <h2 class="text-base/7 font-semibold text-indigo-600 dark:text-indigo-400 animate-fadeInUp">Pricing</h2>
+        <p class="mt-2 text-5xl font-extrabold tracking-tight text-balance text-gray-900 dark:text-white sm:text-6xl animate-bounce">
+          <span class="bg-gradient-to-r from-indigo-500 via-pink-500 to-orange-400 bg-clip-text text-transparent drop-shadow-lg">Choose the right plan for you</span>
+        </p>
+      </div>
+      <p class="mx-auto mt-6 max-w-2xl text-center text-lg font-medium text-pretty text-gray-600 dark:text-gray-300 sm:text-xl/8 animate-fadeInUp">
+        Choose an affordable plan that’s packed with the best features for engaging your audience, creating customer loyalty, and driving sales.
+      </p>
+      <div class="mx-auto mt-16 grid max-w-lg grid-cols-1 items-center gap-y-10 sm:mt-20 sm:gap-y-0 lg:max-w-4xl lg:grid-cols-2">
+        <!-- Kids Monthly -->
+        <div class="relative p-[2px] rounded-3xl bg-gradient-to-r from-pink-500 via-indigo-500 to-orange-400 animate-gradientBG mb-8">
+          <div class="rounded-3xl bg-white/60 dark:bg-gray-800/60 p-8 ring-1 ring-gray-900/10 dark:ring-gray-100/10 sm:p-10 animate-fadeInUp">
+            <h3 id="tier-hobby" class="text-base/7 font-semibold text-indigo-600 dark:text-indigo-400">For Kids</h3>
+            <p class="mt-4 flex items-baseline gap-x-2">
+              <span class="text-5xl font-semibold tracking-tight text-gray-900 dark:text-white">700</span>
+              <span class="text-base text-gray-500 dark:text-gray-300">/month</span>
+            </p>
+            <p class="mt-6 text-base/7 text-gray-600 dark:text-gray-300">The perfect plan if you&#039;re just getting started with our Martial Art Journey.</p>
+            <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600 dark:text-gray-300 sm:mt-10">
+              <li class="flex gap-x-3">
+                <svg class="h-6 w-5 flex-none text-indigo-600 dark:text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+                 Beginner-friendly training
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="h-6 w-5 flex-none text-indigo-600 dark:text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+                Fun & engaging classes
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="h-6 w-5 flex-none text-indigo-600 dark:text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+               develop focus, teamwork, and coordination!
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="h-6 w-5 flex-none text-indigo-600 dark:text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+                24-hour support response time
+              </li>
+            </ul>
+            <a href="#" aria-describedby="tier-hobby"
+               class="mt-8 block rounded-md bg-red-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 sm:mt-10 transition-all duration-300 animate-pulse">
+               Get started today
+            </a>
+          </div>
+        </div>
+        <!-- Kids Annual -->
+        <div class="relative rounded-3xl bg-gray-900 dark:bg-gray-800 p-8 shadow-2xl ring-1 ring-gray-900/10 dark:ring-gray-100/10 sm:p-10 animate-fadeInUp mb-16">
+          <h3 id="tier-enterprise" class="text-base/7 font-semibold text-indigo-400">For Kids</h3>
+          <p class="mt-4 flex items-baseline gap-x-2">
+            <span class="text-5xl font-semibold tracking-tight text-white">₹9,299 </span>
+            <span class="text-base text-gray-400">/Anually</span>
+          </p>
+          <p class="mt-6 text-base/7 text-gray-300"> Join now & start a journey of strength, respect, and personal growth!</p>
+          <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-300 sm:mt-10">
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+              </svg>
+              Annual members get free uniform or extra practice sessions!
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+              </svg>
+               Hassle-Free Enrollment – No need to renew every month; enjoy uninterrupted training.
+            </li>
+
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+              </svg>
+              Priority Access & Special Perks – Annual members often get <b>exclusive access to workshops, special training sessions, or Big-competitions</b> that monthly members might miss out on.
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+              </svg>
+              Get Special discounts for early sign-ups, or family enrollments.
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-indigo-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+              </svg>
+              Free access to our online training portal, where you can review class materials, watch instructional videos, and track your progress.
+            </li>
+          </ul>
+          <a href="#" aria-describedby="tier-enterprise" class="mt-8 block rounded-md bg-indigo-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-indigo-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 sm:mt-10 transition-all duration-300">Get started today</a>
+        </div>
+        <!-- Adults Monthly -->
+        <div class="relative p-[2px] rounded-3xl bg-gradient-to-r from-indigo-500 via-pink-500 to-orange-400 animate-gradientBG mb-8">
+          <div class="rounded-3xl bg-white/60 dark:bg-gray-800/60 p-8 ring-1 ring-gray-900/10 dark:ring-gray-100/10 sm:p-10 animate-fadeInUp">
+            <h3 class="text-base/7 font-semibold text-orange-600 dark:text-orange-400">For Adults</h3>
+            <p class="mt-4 flex items-baseline gap-x-2">
+              <span class="text-5xl font-semibold tracking-tight text-gray-900 dark:text-white">₹1,200</span>
+              <span class="text-base text-gray-500 dark:text-gray-300">/month</span>
+            </p>
+            <p class="mt-6 text-base/7 text-gray-600 dark:text-gray-300">Unlock your potential with our adult martial arts program.</p>
+            <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-600 dark:text-gray-300 sm:mt-10">
+              <li class="flex gap-x-3">
+                <svg class="h-6 w-5 flex-none text-orange-600 dark:text-orange-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+                High-intensity fitness & self-defense classes
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="h-6 w-5 flex-none text-orange-600 dark:text-orange-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+                Flexible evening & weekend timings
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="h-6 w-5 flex-none text-orange-600 dark:text-orange-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+                Personalized progress tracking & feedback
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="h-6 w-5 flex-none text-orange-600 dark:text-orange-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+                Community events & sparring sessions
+              </li>
+              <li class="flex gap-x-3">
+                <svg class="h-6 w-5 flex-none text-orange-600 dark:text-orange-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+                </svg>
+                Free trial class for all new adult members
+              </li>
+            </ul>
+            <a href="#" class="mt-8 block rounded-md bg-orange-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 sm:mt-10 transition-all duration-300 animate-pulse">
+              Get started today
+            </a>
+          </div>
+        </div>
+        <!-- Adults Annual -->
+        <div class="relative rounded-3xl bg-gray-900 dark:bg-gray-800 p-8 shadow-2xl ring-1 ring-gray-900/10 dark:ring-gray-100/10 sm:p-10 animate-fadeInUp">
+          <h3 class="text-base/7 font-semibold text-orange-400">For Adults</h3>
+          <p class="mt-4 flex items-baseline gap-x-2">
+            <span class="text-5xl font-semibold tracking-tight text-white">₹12,999</span>
+            <span class="text-base text-gray-400">/Annually</span>
+          </p>
+          <p class="mt-6 text-base/7 text-gray-300">Commit to a year of transformation and save more!</p>
+          <ul role="list" class="mt-8 space-y-3 text-sm/6 text-gray-300 sm:mt-10">
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-orange-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+              </svg>
+              Free official academy t-shirt & welcome kit
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-orange-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+              </svg>
+              Priority booking for seminars & workshops
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-orange-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+              </svg>
+              Discounted rates for family members
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-orange-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+              </svg>
+              Access to exclusive advanced training sessions
+            </li>
+            <li class="flex gap-x-3">
+              <svg class="h-6 w-5 flex-none text-orange-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 0 1 .143 1.052l-8 10.5a.75.75 0 0 1-1.127.075l-4.5-4.5a.75.75 0 0 1 1.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 0 1 1.05-.143Z" clip-rule="evenodd" />
+              </svg>
+              Free access to online resources & nutrition guides
+            </li>
+          </ul>
+          <a href="#" class="mt-8 block rounded-md bg-orange-500 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-xs hover:bg-orange-400 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 sm:mt-10 transition-all duration-300">
+            Get started today
+          </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      const btn = document.getElementById('toggle-dark');
+      function updateBtn() {
+        btn.textContent = document.body.classList.contains('dark') ? '☀️ Light Mode' : '🌙 Dark Mode';
+      }
+      btn.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        updateBtn();
+        if(document.body.classList.contains('dark')) {
+          localStorage.setItem('theme', 'dark');
+        } else {
+          localStorage.setItem('theme', 'light');
+        }
+      });
+      // On load, set theme from localStorage
+      if(localStorage.getItem('theme') === 'dark') {
+        document.body.classList.add('dark');
+      }
+      if(localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light');
+      }
+      updateBtn();
+    </script>
+</body>
+</html>

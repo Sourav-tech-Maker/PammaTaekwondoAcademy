@@ -1,0 +1,264 @@
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Add to your main CSS file or in a <style> tag */
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+}
+
+@keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Flex container for forms */
+.forms-container {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 60px;
+}
+
+/* Shared container styles */
+.container {
+    background: rgba(255,255,255,0.95);
+    border-radius: 18px;
+    box-shadow: 0 8px 32px rgba(44, 62, 80, 0.15);
+    padding: 36px 32px 32px 32px;
+    min-width: 320px;
+    max-width: 350px;
+    transition: box-shadow 0.2s;
+}
+
+.container .logo {
+    width: 60px;
+    margin-bottom: 18px;
+}
+
+h1 {
+    color: #4f3ca7;
+    margin-bottom: 24px;
+    font-size: 1.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+form input {
+    width: 100%;
+    padding: 12px 14px;
+    margin-bottom: 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f7f7fa;
+    transition: border 0.2s;
+}
+
+form input:focus {
+    border: 1.5px solid #764ba2;
+    outline: none;
+    background: #fff;
+}
+
+button, .secondary-btn {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background 0.2s, color 0.2s;
+}
+
+button[type="submit"] {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(118, 75, 162, 0.08);
+}
+
+.secondary-btn {
+    background: #fff;
+    color: #764ba2;
+    border: 2px solid #764ba2;
+    margin-top: 12px;
+}
+
+.secondary-btn:hover {
+    background: #f3eaff;
+}
+
+button[type="submit"]:hover {
+    background: linear-gradient(90deg, #764ba2 0%, #667eea 100%);
+}
+
+@media (max-width: 900px) {
+    .forms-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+}
+
+/* Animated gradient keyframes */
+@keyframes gradientMove {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+}
+
+/* Enhanced logo animation */
+.logo {
+    width: 80px;
+    margin: 0 auto 20px auto;
+    display: block;
+    animation: logoBounceFade 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+@keyframes logoBounceFade {
+    0% { transform: scale(0.5) translateY(-40px); opacity: 0; }
+    60% { transform: scale(1.1) translateY(10px); opacity: 1; }
+    80% { transform: scale(0.95) translateY(-5px);}
+    100% { transform: scale(1) translateY(0);}
+}
+
+@media (max-width: 600px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .container {
+        width: 95%;
+    }
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    background: rgba(20,20,20,0.7); /* darker for contrast */
+    color: #fff;
+    transition: background 0.3s, color 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    background: rgba(40,40,40,0.9);
+    color: #fff;
+    outline: none;
+}
+
+#mode-toggle {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: rgba(255,255,255,0.2);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+    transition: background 0.3s, color 0.3s;
+    z-index: 10;
+    width: 44px;
+    height: 44px;
+}
+
+#mode-toggle:hover {
+    background: rgba(255,255,255,0.4);
+}
+
+.belt-progress {
+    display: flex;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.belt {
+    width: 40px;
+    height: 16px;
+    border-radius: 8px;
+    border: 2px solid #fff;
+    opacity: 0.5;
+    transition: opacity 0.3s, box-shadow 0.3s;
+}
+
+.belt.current-belt {
+    box-shadow: 0 0 20px 8px gold, 0 0 40px 16px rgba(255,215,0,0.3);
+    border: 2px solid gold;
+    animation: belt-glow 1s ease-in-out infinite;
+    z-index: 2;
+    position: relative;
+}
+
+@keyframes belt-glow {
+    0% { box-shadow: 0 0 0 0 gold; }
+    70% { box-shadow: 0 0 30px 15px gold; }
+    100% { box-shadow: 0 0 20px 8px gold; }
+}
+
+.belt-white { background: #fff; }
+.belt-yellow { background: #ffe066; }
+.belt-green { background: #4caf50; }
+.belt-blue { background: #2196f3; }
+.belt-red { background: #f44336; }
+.belt-black { background: #222; }
+
+.belt.active {
+    opacity: 1;
+    box-shadow: 0 0 8px 2px #fff;
+}
+
+.dashboard {
+    animation: fadeIn 0.7s;
+}
+
+/* Light mode adjustments */
+body.light-mode {
+    background: linear-gradient(135deg, #fffbe7, #e0e7ff, #fffbe7, #e0e7ff);
+    background-size: 400% 400%;
+    color: #222;
+    animation: gradientMove 8s ease-in-out infinite;
+}
+
+body.light-mode .container,
+body.light-mode .card {
+    background: rgba(255,255,255,0.8);
+    color: #222;
+}
+
+body.light-mode input[type="text"],
+body.light-mode input[type="password"] {
+    background: rgba(0,0,0,0.05);
+    color: #222;
+}
+
+body.light-mode input[type="text"]:focus,
+body.light-mode input[type="password"]:focus {
+    background: rgba(0,0,0,0.12);
+    color: #222;
+}
+
+body.light-mode button {
+    background: linear-gradient(135deg, #4f8cff, #a6ffcb);
+    color: #222;
+}
+
+body.light-mode #mode-toggle {
+    background: rgba(0,0,0,0.1);
+    color: #222;
+}

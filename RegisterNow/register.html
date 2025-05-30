@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register Now | Pamma Taekwondo Academy</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="mode-toggle" id="mode-toggle" title="Toggle light/dark mode">
+        <span id="mode-icon">🌙</span>
+    </div>
+    <div class="register-container">
+        <a href="../Main_Page/index.html" class="back-link">← Back to Home</a>
+        <div class="register-card">
+            <h1 class="register-title">Register Now</h1>
+            <form class="register-form" autocomplete="off">
+                <div class="form-group">
+                    <input type="text" required placeholder="Full Name" name="name">
+                </div>
+                <div class="form-group">
+                    <input type="email" required placeholder="Email Address" name="email">
+                </div>
+                <div class="form-group">
+                    <input type="tel" required placeholder="Phone Number" name="phone">
+                </div>
+                <div class="form-group">
+                    <select required name="program">
+                        <option value="" disabled selected>Select Program</option>
+                        <option>Kids Taekwondo</option>
+                        <option>Teens Taekwondo</option>
+                        <option>Adults Taekwondo</option>
+                        <option>Self Defense</option>
+                    </select>
+                </div>
+                <button type="submit" class="register-btn">Register</button>
+            </form> 
+        </div>
+    </div>
+    <script src="register.js"></script>
+</body>
+</html>
