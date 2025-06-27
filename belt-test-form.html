@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Belt Test Registration | Pamma Taekwondo Academy</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #232526 0%, #414345 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 480px;
+      margin: 48px auto;
+      background: #23243a;
+      border-radius: 12px;
+      box-shadow: 0 6px 32px rgba(0, 0, 0, 0.25);
+      padding: 36px 28px;
+      animation: fadeIn 1.2s cubic-bezier(.4, 0, .2, 1);
+      color: #f5f6fa;
+      opacity: 0;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffd600;
+      margin-bottom: 8px;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #b0bec5;
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+      font-weight: 400;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #e0e0e0;
+      font-weight: 500;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 18px;
+      border: 1px solid #5d675e;
+      border-radius: 5px;
+      font-size: 1rem;
+      background: #72759a;
+      color: #f5f6fa;
+      transition: border 0.2s, box-shadow 0.2s;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: #ffd600;
+      outline: none;
+      box-shadow: 0 0 0 2px #ffd60044;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 48px;
+      max-height: 120px;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: flex-start;
+      font-size: 0.97rem;
+      margin-bottom: 18px;
+      color: #b0bec5;
+    }
+
+    .checkbox-label input[type="checkbox"] {
+      margin-right: 10px;
+      margin-top: 2px;
+      accent-color: #ffd600;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #ffd600 0%, #ffb300 100%);
+      color: #232526;
+      border: none;
+      border-radius: 5px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.1s;
+      margin-top: 8px;
+      box-shadow: 0 2px 8px #0002;
+    }
+
+    button:hover {
+      background: linear-gradient(90deg, #ffb300 0%, #ffd600 100%);
+      color: #1a1a1a;
+      transform: translateY(-2px) scale(1.03);
+    }
+
+    .footer {
+      text-align: center;
+      color: #b0bec5;
+      font-size: 0.95rem;
+      margin-top: 32px;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 18px 6px;
+      }
+    }
+
+    /* Add to your <style> block */
+    .pay-btn {
+      border: none;
+      border-radius: 6px;
+      padding: 10px 18px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.1s, box-shadow 0.2s;
+      box-shadow: 0 2px 8px #0002;
+    }
+
+    .pay-btn:hover {
+      transform: scale(1.07);
+      box-shadow: 0 4px 16px #0003;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Pamma Taekwondo Academy</h1>
+    <h2>Belt Test Registration Form</h2>
+    <form class="belt-test-form" autocomplete="off">
+      <label for="userid">User ID</label>
+      <input type="text" id="userid" name="userid" required placeholder="Enter your User ID">
+
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required placeholder="Enter your full name">
+
+      <label for="address">Address</label>
+      <textarea id="address" name="address" required placeholder="Enter your address"></textarea>
+
+      <label for="mobile">Mobile Number</label>
+      <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" maxlength="10" required
+        placeholder="10-digit mobile number">
+
+      <label for="email">Email ID</label>
+      <input type="email" id="email" name="email" required placeholder="your@email.com">
+
+      <label for="currentbelt">Current Belt</label>
+      <select id="currentbelt" name="currentbelt" required>
+        <option value="">Select your current belt</option>
+        <option value="white">White</option>
+        <option value="yellowstripe">Yellow_Stipe</option>
+        <option value="yellow">Yellow</option>
+        <option value="Green_Stripe">Green_Stripe</option>
+        <option value="green">Green</option>
+        <option value="Blue_Stripe">Blue_Stripe</option>
+        <option value="blue">Blue</option>
+        <option value="Red_Stripe">Red_Stripe</option>
+        <option value="red">Red</option>
+        <option value="Black_stripe">Black_Stripe</option>
+        <option value="black">Black</option>
+        <option value="Dan-02">Dan-02</option>
+        <option value="Dan-03">Dan-03</option>
+        <option value="Dan-04">Dan-04</option>
+      </select>
+
+      <label for="dob">Date of Birth</label>
+      <input type="date" id="dob" name="dob" required>
+
+      <label for="emergency">Emergency Contact Name & Number</label>
+      <input type="text" id="emergency" name="emergency" required placeholder="Name & Mobile Number">
+
+      <div class="checkbox-label">
+        <input type="checkbox" id="selfdeclaration" name="selfdeclaration" required>
+        <label for="selfdeclaration" style="margin:0;">
+          I hereby declare that all information provided is true and I am fit to participate in the belt test.
+        </label>
+      </div>
+
+      <button type="submit">Submit Registration</button>
+    </form>
+  </div>
+  <div class="footer">
+    &copy; 2025 Pamma Taekwondo Academy. All rights reserved.
+  </div>
+ 
+
+  <div id="payment-modal"
+    style="display:none;position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.55);align-items:center;justify-content:center;">
+    <div
+      style="background:#23243a;padding:32px 24px;border-radius:12px;max-width:340px;width:90%;box-shadow:0 8px 32px #0008;position:relative;text-align:center;">
+      <h2 style="color:#ffd600;margin-bottom:18px;">Choose Payment Method</h2>
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-bottom:18px;">
+        <button class="pay-btn" data-method="GPay" style="background:#4285f4;color:#fff;">GPay</button>
+        <button class="pay-btn" data-method="Paytm" style="background:#00baf2;color:#fff;">Paytm</button>
+        <button class="pay-btn" data-method="PhonePe" style="background:#673ab7;color:#fff;">PhonePe</button>
+        <button class="pay-btn" data-method="Credit Card" style="background:#ff9800;color:#fff;">Credit Card</button>
+        <button class="pay-btn" data-method="Debit Card" style="background:#4caf50;color:#fff;">Debit Card</button>
+      </div>
+      <div id="payment-status" style="min-height:32px;margin-bottom:10px;"></div>
+      <button id="close-payment"
+        style="background:#b0bec5;color:#23243a;padding:6px 18px;border-radius:6px;border:none;cursor:pointer;">Cancel</button>
+    </div>
+  </div>
+
+  
+ <script src="belt-test-form.js"></script>
+</body>
+
+</html>
