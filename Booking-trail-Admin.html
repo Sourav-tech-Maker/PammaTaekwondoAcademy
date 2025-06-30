@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Trial Bookings Admin</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Modern styles and animation for admin table -->
+  <style>
+    body {
+      background: linear-gradient(120deg, #00c6ff11 0%, #ff512f11 100%);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    h2 {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 2.2rem;
+      background: linear-gradient(90deg, #0090cc 0%, #d13a1a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .search-bar {
+      margin: 24px auto 0 auto;
+      display: block;
+      padding: 12px;
+      width: 260px;
+      border-radius: 12px;
+      border: 1.5px solid #00c6ff;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 12px #00c6ff22;
+      transition: border 0.2s;
+    }
+    .search-bar:focus {
+      border: 1.5px solid #ff512f;
+      outline: none;
+    }
+    .admin-table {
+      width: 95%;
+      margin: 32px auto 0 auto;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #c49090;
+      border-radius: 18px;
+      box-shadow: 0 4px 32px #00c6ff22;
+      overflow: hidden;
+      animation: fadeInUp 1s cubic-bezier(.23, 1.01, .32, 1) both;
+    }
+    .admin-table th, .admin-table td {
+      padding: 14px 10px;
+      text-align: center;
+      font-size: 1.08rem;
+    }
+    .admin-table th {
+      background: linear-gradient(90deg, #0090cc 0%, #d13a1a 100%);
+      color: #413d3d;
+      font-weight: 600;
+      border: none;
+    }
+    .admin-table tr {
+      transition: background 0.2s;
+    }
+    .admin-table tr:hover {
+      background: #767c81;
+    }
+    .edit-btn, .save-btn, .delete-btn {
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      margin: 0 2px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      box-shadow: 0 2px 8px #00c6ff22;
+    }
+    .edit-btn {
+      background: linear-gradient(90deg, #00c6ff 0%, #0090cc 100%);
+      color: #543f3f;
+    }
+    .edit-btn:hover {
+      background: linear-gradient(90deg, #0090cc 0%, #00c6ff 100%);
+      transform: scale(1.07);
+    }
+    .save-btn {
+      background: linear-gradient(90deg, #ff512f 0%, #d13a1a 100%);
+      color: #695a5a;
+      display: none;
+    }
+    .save-btn:hover {
+      background: linear-gradient(90deg, #d13a1a 0%, #ff512f 100%);
+      transform: scale(1.07);
+    }
+    .delete-btn {
+      background: linear-gradient(90deg, #ff5e62 0%, #ff9966 100%);
+      color: #312b2b;
+    }
+    .delete-btn:hover {
+      background: linear-gradient(90deg, #ff9966 0%, #ff5e62 100%);
+      transform: scale(1.07);
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <h2>Trial Bookings Admin</h2>
+  <input class="search-bar" id="searchInput" placeholder="Search by name, email, phone" />
+  <table class="admin-table" id="bookingTable">
+    <thead>
+      <tr>
+        <th>Name</th><th>Email</th><th>Phone</th><th>Age</th><th>Level</th><th>Date</th><th>Edit</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script>
+    async function fetchBookings(search = '') {
+      const res = await fetch('http://localhost:3001/api/trial-bookings?search=' + encodeURIComponent(search));
+      const bookings = await res.json();
+      const tbody = document.querySelector('#bookingTable tbody');
+      tbody.innerHTML = '';
+      bookings.forEach(b => {
+        const tr = document.createElement('tr');
+        tr.style.animation = "fadeInUp 0.7s";
+        tr.innerHTML = `
+          <td contenteditable="false">${b.name}</td>
+          <td contenteditable="false">${b.email}</td>
+          <td contenteditable="false">${b.phone}</td>
+          <td contenteditable="false">${b.age}</td>
+          <td contenteditable="false">${b.level}</td>
+          <td>${new Date(b.date).toLocaleString()}</td>
+          <td>
+            <button class="edit-btn">Edit</button>
+            <button class="save-btn">Save</button>
+            <button class="delete-btn">Delete</button>
+          </td>
+        `;
+        // Edit/Save logic
+        const editBtn = tr.querySelector('.edit-btn');
+        const saveBtn = tr.querySelector('.save-btn');
+        const deleteBtn = tr.querySelector('.delete-btn');
+        editBtn.onclick = () => {
+          tr.querySelectorAll('td[contenteditable]').forEach(td => td.contentEditable = "true");
+          editBtn.style.display = 'none';
+          saveBtn.style.display = '';
+        };
+        saveBtn.onclick = async () => {
+          const updated = {
+            name: tr.children[0].textContent,
+            email: tr.children[1].textContent,
+            phone: tr.children[2].textContent,
+            age: tr.children[3].textContent,
+            level: tr.children[4].textContent
+          };
+          await fetch('http://localhost:3001/api/trial-booking/' + b._id, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(updated)
+          });
+          tr.querySelectorAll('td[contenteditable]').forEach(td => td.contentEditable = "false");
+          editBtn.style.display = '';
+          saveBtn.style.display = 'none';
+        };
+        // Delete logic
+        deleteBtn.onclick = async () => {
+          if (confirm('Are you sure you want to delete this booking?')) {
+            await fetch('http://localhost:3001/api/trial-booking/' + b._id, {
+              method: 'DELETE'
+            });
+            tr.style.transition = "opacity 0.4s";
+            tr.style.opacity = 0;
+            setTimeout(() => tr.remove(), 400);
+          }
+        };
+        tbody.appendChild(tr);
+      });
+    }
+    fetchBookings();
+
+    document.getElementById('searchInput').addEventListener('input', function() {
+      fetchBookings(this.value);
+    });
+  </script>
+</body>
+</html>

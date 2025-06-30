@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pamma's Taekwondo Academy</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <style>
+    .pricing-headline {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    @media (max-width: 600px) {
+      .pricing-headline {
+        font-size: 1.5rem !important;
+      }
+    }
+
+    .belt-test-marquee {
+      width: 100vw;
+      overflow: hidden;
+      background: #e78027;
+      padding: 0.5rem 0;
+      position: relative;
+      z-index: 10;
+      box-shadow: 0 2px 8px #0002;
+    }
+
+    .belt-test-marquee span {
+      display: inline-block;
+      white-space: nowrap;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 1px 1px 6px #0008;
+      animation: marqueeTrain 12s linear infinite;
+      letter-spacing: 1px;
+      background: #000000;
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation-name: marqueeTrain, colorFlow;
+      animation-duration: 12s, 4s;
+      animation-timing-function: linear, linear;
+      animation-iteration-count: infinite, infinite;
+    }
+
+    .belt-test-marquee span:hover {
+      animation-play-state: paused;
+    }
+
+    @keyframes marqueeTrain {
+      0% {
+        transform: translateX(100vw);
+      }
+
+      100% {
+        transform: translateX(-100%);
+      }
+    }
+
+    @keyframes colorFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      100% {
+        background-position: 200% 50%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="main-content">
+    <header class="header">
+      <div class="logo">
+        <img src="./Image/logo.png" alt="Pamma's Taekwondo Academy Logo">
+        <h1>Pamma's Taekwondo Academy</h1>
+        <button id="mode-toggle" style="position:relative;top:1rem;right:1rem;z-index:99999;">🌙</button>
+      </div>
+      <nav>
+        <ul class="nav-list">
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="./about-us-page/build/index.html" target="_blank">About</a></li>
+          <li><a href="./pamma-taekwondo-contact/src/index.html" target="_blank">Contact Us</a></li>
+          <li><a href="./RegisterNow/register.html" target="_blank" class="register-btn">Register Now</a></li>
+          <li class="dropdown">
+            <button class="dropbtn">Other-Item ▼</button>
+            <div class="dropdown-content">
+              <a href="/Book_Trial.html">Book-Trail-Class</a>
+              <a href="./gallery.html"  target="_blank">Gallery</a>
+              <a href="./Student_Dashboard/student-dashboard/src/index.html" target="_blank">Student_Dashboard</a>
+              <a href="/login">Student: Mark Your Attendance</a>
+
+            </div>
+          </li>
+          <li><button id="admin-login-btn" class="register-btn" type="button">Admin</button></li>
+        </ul>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open navigation">
+          <span></span>
+        </button>
+      </nav>
+    </header>
+    </header>
+    <div class="belt-test-marquee">
+      <span><a href="/belt-test-form.html">Registration for Belt Test is OPEN! &nbsp;|&nbsp;
+          All levels welcome!</a></span>
+    </div>
+    <section class="hero animate-fadein">
+      <div class="hero-content">
+        <h2>Unleash Your Inner Champion</h2>
+        <p>Join the best Taekwondo academy in town. Train with certified instructors, make new friends, and
+          build confidence!</p>
+        <a href="#" class="cta-btn" id="join-now-btn">Join Now</a>
+      </div>
+      <div class="offer-banner">
+        <img src="./Image/offer.png" alt="Special Offer">
+      </div>
+    </section>
+    <section class="gallery-section">
+      <h2 class="gallery-title">Our Academy in Action</h2>
+      <div class="gallery">
+        <img src="./Image/download (1).jpg" alt="Taekwondo Training 1">
+        <img src="./Image/download.jpg" alt="Taekwondo Training 2">
+        <img src="./Image/self.jpg" alt="Taekwondo Training 3">
+        <img src="./Image/slef2.jpg" alt="Taekwondo Training 4">
+      </div>
+    </section>
+  </div>
+  <!-- Chatbot Widget Start -->
+  <div id="chatbot-container">
+    <button id="chatbot-toggle">💬</button>
+    <div id="chatbot-window" style="display:none;">
+      <div id="chatbot-header">Ask Pamma Bot <span id="chatbot-close">&times;</span></div>
+      <div id="chatbot-messages"></div>
+      <form id="chatbot-form">
+        <input type="text" id="chatbot-input" placeholder="Type your question..." autocomplete="off" required />
+        <button type="submit">Send</button>
+      </form>
+    </div>
+  </div>
+  <!-- Chatbot Widget End -->
+
+  <!-- Registration Modal -->
+  <div id="register-modal" class="modal">
+    <div class="modal-gradient-border">
+      <div class="modal-content">
+        <span class="close" id="close-register">&times;</span>
+        <h2>Register to Continue</h2>
+        <form id="register-form">
+          <input type="text" id="reg-name" placeholder="Your Name" required>
+          <input type="email" id="reg-email" placeholder="Your Email" required>
+          <button type="submit">Register</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pricing Modal -->
+  <div id="pricing-modal" class="modal">
+    <div class="modal-gradient-border">
+      <div class="modal-content">
+        <span class="close" id="close-pricing">&times;</span>
+        <h2><a href="/Princing_Section/index.html">More Pricing Plans</a></h2>
+        <!-- You can embed your pricing section or iframe here -->
+        <iframe src="./Princing_Section/index.html" style="width:100%;height:400px;border:none;"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Pricing data for modal (Kids Monthly & Adults Monthly)
+    const pricingModalContent = `
+      <div class="pricing-modal-inner" style="padding: 1.5rem;">
+        <h2 style="text-align:center;margin-bottom:1rem;">Choose Your Plan</h2>
+        <div style="text-align:center;margin-bottom:1.5rem;">
+          <span style="display:inline-block;background:#f59e42;color:#fff;font-weight:700;padding:0.5rem 1.2rem;border-radius:1rem;font-size:1.1rem;box-shadow:0 2px 8px #f59e4233;">
+            🎉 15% OFF for the first 50 users on any plan!
+          </span>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;">
+          <!-- Kids Monthly -->
+          <div style="background:rgba(255,255,255,0.95);border-radius:1.5rem;box-shadow:0 4px 24px #0001;padding:1.5rem;max-width:320px;flex:1;">
+            <h3 style="color:#6366f1;font-weight:600;">For Kids</h3>
+            <p style="font-size:2rem;font-weight:bold;color:#222;">₹700 <span style="font-size:1rem;color:#888;">/month</span></p>
+            <ul style="margin:1rem 0 1.5rem 1.2rem;padding:0;list-style:disc;color:#444;">
+              <li>Beginner-friendly training</li>
+              <li>Fun & engaging classes</li>
+              <li>Develop focus, teamwork, and coordination</li>
+              <li>24-hour support response time</li>
+            </ul>
+            <a href="./RegisterNow/register.html" class="cta-btn" style="display:block;text-align:center;background:#6366f1;color:#fff;padding:0.7rem 0;border-radius:0.5rem;font-weight:600;text-decoration:none;">Get started</a>
+          </div>
+          <!-- Adults Monthly -->
+          <div style="background:rgba(255,255,255,0.95);border-radius:1.5rem;box-shadow:0 4px 24px #0001;padding:1.5rem;max-width:320px;flex:1;">
+            <h3 style="color:#f59e42;font-weight:600;">For Adults</h3>
+            <p style="font-size:2rem;font-weight:bold;color:#222;">₹1,200 <span style="font-size:1rem;color:#888;">/month</span></p>
+            <ul style="margin:1rem 0 1.5rem 1.2rem;padding:0;list-style:disc;color:#444;">
+              <li>High-intensity fitness & self-defense classes</li>
+              <li>Flexible evening & weekend timings</li>
+              <li>Personalized progress tracking & feedback</li>
+              <li>Community events & sparring sessions</li>
+              <li>Free trial class for new adult members</li>
+            </ul>
+            <a href="./RegisterNow/register.html" class="cta-btn" style="display:block;text-align:center;background:#f59e42;color:#fff;padding:0.7rem 0;border-radius:0.5rem;font-weight:600;text-decoration:none;">Get started</a>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:2rem;">
+          <a href="#" id="show-more-pricing" style="color:#6366f1;font-weight:600;text-decoration:underline;">More Pricing Plans</a>
+        </div>
+      </div>
+    `;
+
+    // Show pricing modal with only 2 plans
+    document.getElementById('join-now-btn').addEventListener('click', function (e) {
+      e.preventDefault();
+      const modal = document.getElementById('pricing-modal');
+      const modalContent = modal.querySelector('.modal-content');
+      // Save original content to restore later
+      if (!modalContent.dataset.original) {
+        modalContent.dataset.original = modalContent.innerHTML;
+      }
+      modalContent.innerHTML = `<span class="close" id="close-pricing">&times;</span>` + pricingModalContent;
+      modal.style.display = 'block';
+
+      // Close modal
+      modal.querySelector('#close-pricing').onclick = function () {
+        modal.style.display = 'none';
+        modalContent.innerHTML = modalContent.dataset.original;
+      };
+
+      // Show full pricing on "More Pricing Plans"
+      modal.querySelector('#show-more-pricing').onclick = function (ev) {
+        ev.preventDefault();
+        window.location.href = "./Princing_Section/index.html";
+      };
+    });
+
+    // Optional: Close modal when clicking outside
+    window.onclick = function (event) {
+      const modal = document.getElementById('pricing-modal');
+      if (event.target === modal) {
+        const modalContent = modal.querySelector('.modal-content');
+        modal.style.display = 'none';
+        if (modalContent.dataset.original) {
+          modalContent.innerHTML = modalContent.dataset.original;
+        }
+      }
+    };
+  </script>
+
+  <!-- Admin Login Modal -->
+  <div id="admin-login-modal" class="modal" style="display:none;">
+    <div class="modal-gradient-border">
+      <div class="modal-content" style="max-width:350px;">
+        <span class="close" id="close-admin-login">&times;</span>
+        <h2>Admin Login</h2>
+        <form id="admin-login-form">
+          <input type="text" id="admin-id" placeholder="Admin ID" required>
+          <input type="password" id="admin-pass" placeholder="Passcode" required>
+          <button type="submit">Login</button>
+        </form>
+        <div id="admin-login-error" style="color:#d50000;margin-top:10px;display:none;"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="feature-sections">
+    <section class="workout-generator-section">
+      <h2>Exercise Simulation</h2>
+      <form id="workout-form" autocomplete="off">
+        <label for="fitness-level">Select your level:</label>
+        <select id="fitness-level" required>
+          <option value="">Choose...</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+        <button type="submit">Generate Workout</button>
+      </form>
+      <div id="workout-result" style="display:none;"></div>
+    </section>
+
+    <section class="ar-drill-section">
+      <h2 class="ar-drill-title">AR Drill: Prepare for Sparring</h2>
+      <div class="ar-drill-content">
+        <p>Click the button below to start your sparring preparation drill. Follow the instructions and improve your
+          reflexes!</p>
+        <button id="start-ar-drill" class="ar-drill-btn">Start AR Drill</button>
+        <div id="ar-drill-anim-area" class="ar-drill-anim-area"
+          style="position:relative;min-height:120px;margin-top:1.5rem;"></div>
+    </section>
+  </div>
+  <footer>
+    <p>&copy; 2025 Pamma's Taekwondo Academy. All rights reserved.</p>
+    <div class="social-media">
+      <a href="https://www.facebook.com" target="_blank">Facebook</a>
+      <a href="https://www.twitter.com" target="_blank">Twitter</a>
+      <a href="https://www.instagram.com" target="_blank">Instagram</a>
+    </div>
+  </footer>
+  <script>
+    // Admin Login Modal Logic
+    document.getElementById('admin-login-btn').onclick = function () {
+      document.getElementById('admin-login-modal').style.display = 'block';
+      document.getElementById('admin-login-error').style.display = 'none';
+    };
+    document.getElementById('close-admin-login').onclick = function () {
+      document.getElementById('admin-login-modal').style.display = 'none';
+    };
+    window.addEventListener('click', function (e) {
+      const modal = document.getElementById('admin-login-modal');
+      if (e.target === modal) modal.style.display = 'none';
+    });
+    document.getElementById('admin-login-form').onsubmit = function (e) {
+      e.preventDefault();
+      const id = document.getElementById('admin-id').value.trim();
+      const pass = document.getElementById('admin-pass').value.trim();
+      // Simple check (replace with real backend check for production)
+      if (id === "admin" && pass === "1234") {
+        window.location.href = "admin.html";
+      } else {
+        const err = document.getElementById('admin-login-error');
+        err.textContent = "Invalid ID or passcode.";
+        err.style.display = 'block';
+      }
+    };
+  </script>
+</body>
+
+</html>

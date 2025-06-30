@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trial-booking</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Trial Class Booking Form -->
+<section class="trial-section">
+  <h2 class="trial-title">Book a Free Trial Class</h2>
+  <form class="trial-form" id="trialForm">
+    <div class="form-group">
+      <input type="text" name="name" placeholder="Your Name" required />
+    </div>
+    <div class="form-group">
+      <input type="email" name="email" placeholder="Email Address" required />
+    </div>
+    <div class="form-group">
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+    </div>
+    <div class="form-group">
+      <input type="text" name="age" placeholder="Age" required />
+    </div>
+    <div class="form-group">
+      <select name="level" required>
+        <option value="">Select Level</option>
+        <option value="Beginner">Beginner</option>
+        <option value="Intermediate">Intermediate</option>
+        <option value="Advanced">Advanced</option>
+      </select>
+    </div>
+    <button type="submit" class="trial-btn">Book Trial</button>
+    <div id="formMsg"></div>
+  </form>
+</section>
+
+<script>
+document.getElementById('trialForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = {
+    name: form.name.value,
+    email: form.email.value,
+    phone: form.phone.value,
+    age: form.age.value,
+    level: form.level.value
+  };
+  const msg = document.getElementById('formMsg');
+  msg.textContent = "Submitting...";
+  msg.style.color = "#00c6ff";
+  try {
+    const res = await fetch('http://localhost:3001/api/trial-booking', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    if (res.ok) {
+      msg.textContent = "Thank you! Your trial class is booked.";
+      msg.style.color = "#00c6ff";
+      form.reset();
+    } else {
+      msg.textContent = "Something went wrong. Please try again.";
+      msg.style.color = "#ff512f";
+    }
+  } catch {
+    msg.textContent = "Server error. Try again later.";
+    msg.style.color = "#ff512f";
+  }
+});
+</script>
+</body>
+</html>
