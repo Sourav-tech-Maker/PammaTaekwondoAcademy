@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User 1-month-data</title>
+    <style>
+        .maincontainer{
+            color: #f6bcf6;
+            background: linear-gradient(90deg, #f7971e 60%, #2c5364 100%);
+            padding: 20px;
+            margin: 23px;
+        }
+        .attendance-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fff;
+            color: #333;
+        }
+        .attendance-table th, .attendance-table td {
+            border: 1px solid #aaa;
+            padding: 4px 8px;
+            text-align: center;
+        }
+        .present { background: #c8f7c5; }
+        .absent { background: #f7c5c5; }
+    </style>
+</head>
+<body>
+    <div class="maincontainer">
+        <h1>User 1 Month Attendance</h1>
+        <table class="attendance-table">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <% for(let day = 1; day <= daysInMonth; day++) { %>
+                        <th><%= day %></th>
+                    <% } %>
+                </tr>
+            </thead>
+            <tbody>
+                <% users.forEach(user => { %>
+                    <tr>
+                        <td><%= user.name %></td>
+                        <% user.attendance.forEach(status => { %>
+                            <td class="<%= status === 'Present' ? 'present' : 'absent' %>">
+                                <%= status === 'Present' ? 'P' : 'A' %>
+                            </td>
+                        <% }) %>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

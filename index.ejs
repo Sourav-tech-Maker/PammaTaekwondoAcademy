@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pamma Taekwondo Admin</title>
+  <link rel="stylesheet" href="/public/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    .menu-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      animation: fadeInUp 1.2s;
+    }
+    .menu-list li {
+      background: linear-gradient(90deg, #f7971e 60%, #2c5364 100%);
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(44,83,100,0.15);
+      transition: transform 0.2s, box-shadow 0.2s;
+      overflow: hidden;
+    }
+    .menu-list li:hover {
+      transform: translateY(-6px) scale(1.03);
+      box-shadow: 0 8px 32px rgba(31,38,135,0.25);
+    }
+    .menu-list a {
+      display: block;
+      padding: 1.2rem 2rem;
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+    .menu-list a:hover {
+      color: #222;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <header>Pamma Taekwondo Admin Panel</header>
+  <div class="container">
+    <h2 style="text-align:center; margin-bottom:2rem; letter-spacing:1px;">Welcome!</h2>
+    <ul class="menu-list">
+      <li><a href="/user 1-month-data">Admin: 1-month-data</a></li>
+      <li><a href="/attendance">Admin: Class Attendance Tracker</a></li>
+      <li><a href="/notifications">Admin: Send Notifications</a></li>
+      <li><a href="/payments">Admin: Payment Dues Alert</a></li>
+      <li><a href="/add-student">Admin: Add Student (Demo)</a></li>
+      <li><a href="/login">Student: Mark Your Attendance</a></li>
+    </ul>
+  </div>
+</body>
+</html>

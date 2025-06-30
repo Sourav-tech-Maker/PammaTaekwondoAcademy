@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Payment Dues Alert</title>
+  <link rel="stylesheet" href="/public/styles.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027, #2c5364, #f7971e);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: rgba(44, 83, 100, 0.95);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      padding: 2.5rem 2rem;
+      max-width: 400px;
+      width: 100%;
+      animation: fadeIn 1s;
+    }
+    header {
+      text-align: center;
+      color: #fff;
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      letter-spacing: 2px;
+      font-weight: 700;
+    }
+    h3 {
+      color: #f7971e;
+      text-align: center;
+      margin-bottom: 1.2rem;
+    }
+    .success {
+      color: green;
+      text-align: center;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    li {
+      background: #fff;
+      padding: 0.8rem;
+      margin-bottom: 0.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(44, 83, 100, 0.1);
+    }
+    input[type="submit"] {
+      width: 100%;
+      background: linear-gradient(90deg, #f7971e 60%, #2c5364 100%);
+      color: #fff;
+      border: none;
+      padding: 0.8rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    input[type="submit"]:hover {
+      background: linear-gradient(90deg, #2c5364 60%, #f7971e 100%);
+    }
+    a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #f7971e;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    .already {
+      color: #43e97b;
+      font-weight: 600;
+      text-align: center;
+      display: block;
+      margin-top: 1rem;
+    }
+    .success {
+      background: #43e97b;
+      color: #222;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      text-align: center;
+      animation: fadeIn 0.7s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (max-width: 480px) {
+      .container {
+        padding: 1.5rem 1rem;
+      }
+      header {
+        font-size: 1.5rem;
+      }
+      h3 {
+        font-size: 1.2rem;
+      }
+      input[type="submit"] {
+        font-size: 1rem;
+      }
+    }
+
+    ul li {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    ul li:hover {
+      background: rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+    }
+    ul li:hover a {
+      color: #f7971e;
+    }
+    ul li a {
+      color: #333;
+      text-decoration: none;
+    }
+    ul li a:hover {
+      text-decoration: underline;
+    }
+    ul li span {
+      font-weight: bold;
+      color: #f7971e;
+    }
+    ul li .email {
+      font-size: 0.9rem;
+      color: #666;
+    }
+    ul li .dues {
+      color: #e74c3c;
+      font-weight: bold;
+    }
+    ul li .dues::before {
+      content: "Rs. ";
+    }
+    ul li .dues::after {
+      content: " due";
+    }
+    ul li .dues:hover {
+      color: #c0392b;
+    }
+    ul li .dues:hover::after {
+      content: " (click to pay)";
+      color: #f39c12;
+    }
+    ul li .dues:hover::before {
+      content: "Pay ";
+      color: #27ae60;
+    }
+    ul li .dues:hover a {
+      color: #27ae60;
+      text-decoration: none;
+    }
+    ul li .dues:hover a:hover {
+      text-decoration: underline;
+    }
+    ul li .dues:hover a:active {
+      color: #c0392b;
+    }
+    ul li .dues:hover a:visited {
+      color: #8e44ad;
+    }
+    ul li .dues:hover a:focus {
+      outline: 2px solid #f7971e;
+      outline-offset: 2px;
+    }
+    ul li .dues:hover a:focus-visible {
+      outline: 2px solid #f39c12;
+      outline-offset: 2px;
+    }
+    ul li .dues:hover a:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    ul li .dues:hover a:focus:not(:focus-visible):active {
+      outline: 2px solid #c0392b;
+      outline-offset: 2px;
+    }
+    ul li .dues:hover a:focus:not(:focus-visible):visited {
+      outline: 2px solid #8e44ad;
+      outline-offset: 2px;
+    } 
+
+    
+  </style>
+</head>
+<body>
+  <header>Payment Dues Alert</header>
+  <div class="container">
+    <% if (message) { %>
+      <div class="success"><%= message %></div>
+    <% } %>
+    <h3>Students with Dues</h3>
+    <ul>
+      <% dueStudents.forEach(s => { %>
+        <li><%= s.name %> - Rs.<%= s.dues %> (<%= s.email %>)</li>
+      <% }) %>
+    </ul>
+    <% if (dueStudents.length > 0) { %>
+      <form method="POST" action="/payments/alert">
+        <input type="submit" value="Send Payment Alerts" />
+      </form>
+    <% } else { %>
+      <p>No dues pending!</p>
+    <% } %>
+    <a href="/">← Back</a>
+  </div>
+</body>
+</html>

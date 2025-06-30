@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Attendance Tracker</title>
+  <link rel="stylesheet" href="/public/styles.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8 0%, #e0e7ff 100%);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: #4f46e5;
+      color: #fff;
+      padding: 1.5rem 0;
+      text-align: center;
+      font-size: 2rem;
+      letter-spacing: 1px;
+      box-shadow: 0 2px 8px rgba(79,70,229,0.08);
+    }
+
+    .container {
+      background: #fff;
+      max-width: 540px;
+      margin: 2rem auto;
+      padding: 2rem 2.5rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 24px rgba(79,70,229,0.10);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1.5rem;
+    }
+
+    th, td {
+      padding: 0.75rem 0.5rem;
+      text-align: left;
+    }
+
+    th {
+      background: #6366f1;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 0.5rem 0.5rem 0 0;
+    }
+
+    tr:nth-child(even) td {
+      background: #f3f4f6;
+    }
+
+    input[type="checkbox"] {
+      accent-color: #6366f1;
+      width: 1.2em;
+      height: 1.2em;
+    }
+
+    input[type="submit"] {
+      background: #6366f1;
+      color: #fff;
+      border: none;
+      padding: 0.7em 1.5em;
+      border-radius: 0.5em;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    input[type="submit"]:hover {
+      background: #4338ca;
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 1.5rem;
+      color: #6366f1;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    a:hover {
+      color: #4338ca;
+    }
+  </style>
+</head>
+<body>
+  <header>Class Attendance Tracker (Admin)</header>
+  <div class="container">
+    <form method="POST">
+      <table>
+        <tr>
+          <th>Student</th>
+          <th>Present?</th>
+        </tr>
+        <% students.forEach(s => { %>
+        <tr>
+          <td><%= s.name %></td>
+          <td>
+            <input type="checkbox" name="attended" value="<%= s._id %>" <%= s.attended ? 'checked' : '' %> />
+          </td>
+        </tr>
+        <% }) %>
+      </table>
+      <input type="submit" value="Save Attendance" />
+    </form>
+    <a href="/">← Back</a>
+  </div>
+</body>
+</html>

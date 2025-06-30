@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Send Notifications</title>
+  <link rel="stylesheet" href="/styles.css">
+  <style>
+    body {
+      background: linear-gradient(135deg, #0f2027, #2c5364, #f7971e);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    .container {
+      max-width: 600px;
+      margin: 2rem auto;
+      background: rgba(44, 83, 100, 0.95);
+      border-radius: 18px;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      animation: fadeIn 1.2s;
+    }
+    header {
+      background: #f7971e;
+      color: #fff;
+      padding: 1rem 2rem;
+      text-align: center;
+      letter-spacing: 2px;
+      font-size: 2rem;
+      border-radius: 12px 12px 0 0;
+      margin-bottom: 1.5rem;
+    }
+    label {
+      color: #f7971e;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 0.7rem;
+      margin-top: 0.3rem;
+      margin-bottom: 1rem;
+      border: none;
+      border-radius: 8px;
+      background: #fff;
+      color: #222;
+      font-size: 1rem;
+      transition: box-shadow 0.2s;
+      box-shadow: 0 2px 8px rgba(44,83,100,0.07);
+    }
+    input[type="text"]:focus, textarea:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px #f7971e;
+    }
+    input[type="submit"] {
+      background: linear-gradient(90deg, #f7971e 60%, #2c5364 100%);
+      color: #fff;
+      border: none;
+      padding: 0.8rem 2rem;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 1rem;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    input[type="submit"]:hover {
+      background: linear-gradient(90deg, #2c5364 60%, #f7971e 100%);
+    }
+    .success {
+      background: #43e97b;
+      color: #222;
+      padding: 0.7rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      text-align: center;
+      animation: fadeIn 0.7s;
+    }
+    .recipients-list {
+      max-height: 180px;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 8px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 8px rgba(44,83,100,0.07);
+    }
+    .recipients-list label {
+      color: #2c5364;
+      font-weight: 500;
+      margin-right: 1.5rem;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>Send Bulk Notifications</header>
+    <% if (message) { %>
+      <div class="success"><%= message %></div>
+    <% } %>
+    <form method="GET" action="/notifications" style="margin-bottom:1.5rem;">
+      <label for="filter">Filter Students:</label>
+      <select name="filter" id="filter" onchange="this.form.submit()">
+        <option value="all" <%= filter === "all" ? "selected" : "" %>>All Students</option>
+        <option value="dues" <%= filter === "dues" ? "selected" : "" %>>Payment Dues</option>
+        <option value="lowattendance" <%= filter === "lowattendance" ? "selected" : "" %>>Low Attendance</option>
+      </select>
+    </form>
+    <form method="POST">
+      <label>Subject:</label>
+      <input type="text" name="subject" required>
+      <label>Message:</label>
+      <textarea name="message" rows="4" required></textarea>
+      <label>Recipients:</label>
+      <div class="recipients-list">
+        <% students.forEach(s => { %>
+          <label>
+            <input type="checkbox" name="recipients" value="<%= s._id %>" checked>
+            <%= s.name %> (<%= s.email %>)
+          </label><br>
+        <% }) %>
+      </div>
+      <input type="submit" value="Send Notification" />
+    </form>
+    <a href="/">← Back</a>
+  </div>
+</body>
+</html>
